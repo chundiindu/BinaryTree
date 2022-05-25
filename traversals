@@ -1,0 +1,71 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+    Node(int data)
+    {
+        this.data=data;
+        
+    }
+}
+public class BinaryTree{
+    static Scanner sc = null;
+    public static void main(String[] args)
+    {
+    sc = new Scanner(System.in);
+    createTree();
+       inOrder(root);
+       preOrder(root);
+       postOrder(root);
+    }
+    
+    static Node createTree(){
+          Node root = null;
+          System.out.print("Enter data");
+         int data =  sc.nextInt();
+          root = new Node(data);
+          if(data==-1)
+          {
+              return null;
+          }
+          System.out.print("Enter left data" +data);
+          
+          root.left = createTree();
+            System.out.print("Enter right data" +data);
+          root.right = createTree();
+          return root;
+}
+static void preOrder(Node root)
+{
+    if(root==null)
+    {
+        return ;
+    }
+    
+    System.out.print(root.data+" ");
+      inOrder(root.left);
+    inOrder(root.right);
+}
+static void inOrder(Node root)
+{
+    if(root==null)
+    {
+        return ;
+    }
+    inOrder(root.left);
+    System.out.print(root.data+" ");
+    inOrder(root.right);
+}
+static void postOrder(Node root)
+{
+    if(root==null)
+    {
+        return ;
+    }
+    inOrder(root.left);
+   
+    inOrder(root.right);
+     System.out.print(root.data+" ");
+}
+
+}
